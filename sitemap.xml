@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+<<<<<<< HEAD
     <loc>https://xmhuster.github.io/MBlog/MBlog/2016/09/04/hello-world/</loc>
+=======
+    <loc>https://xmhuster.github.io/MBlog/2016/09/04/hello-world/</loc>
+>>>>>>> refs/remotes/origin/master
     
     <lastmod>2016-09-04T11:06:14.156Z</lastmod>
     
