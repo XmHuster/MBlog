@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>HappyBird</title>
   <subtitle>Happy like a birds</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
   <updated>2016-09-04T11:06:14.156Z</updated>
