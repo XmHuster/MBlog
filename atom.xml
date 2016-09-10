@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>HappyBird</title>
-  <subtitle>Happy like a birds</subtitle>
+  <subtitle>No fear and Go ahead</subtitle>
   <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
-  <updated>2016-09-04T11:06:14.156Z</updated>
+  <updated>2016-09-10T16:31:36.354Z</updated>
   <id>https://xmhuster.github.io/MBlog/</id>
   
   <author>
@@ -16,29 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World  zhejiushixindel</title>
+    <title>怎么使用hexo在github上面搭建个人博客</title>
     <link href="https://xmhuster.github.io/MBlog/2016/09/04/hello-world/"/>
     <id>https://xmhuster.github.io/MBlog/2016/09/04/hello-world/</id>
     <published>2016-09-04T10:47:13.158Z</published>
-    <updated>2016-09-04T11:06:14.156Z</updated>
+    <updated>2016-09-10T16:31:36.354Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><p>本篇博客是记录自己怎么搭建起这个博客，以及过程中遇到什么问题，如何解决这些问题。</p>
+<h2 id="了解Hexo"><a href="#了解Hexo" class="headerlink" title="了解Hexo"></a>了解Hexo</h2><ul>
+<li><a href="https://hexo.io/" target="_blank" rel="external">hexo</a></li>
+</ul>
+<h2 id="安装GIT"><a href="#安装GIT" class="headerlink" title="安装GIT"></a>安装GIT</h2><ul>
+<li><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub Windows</a></li>
+</ul>
+<h2 id="安装Node-JS"><a href="#安装Node-JS" class="headerlink" title="安装Node.JS"></a>安装Node.JS</h2><ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.JS</a></li>
+</ul>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>在安装完GIT后，桌面上会出现Git Shell，打开后，输入npm命令就可以安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ npm install hexo --save</div></pre></td></tr></table></figure></p>
+<h2 id="hexo的配置"><a href="#hexo的配置" class="headerlink" title="hexo的配置"></a>hexo的配置</h2><p> 根据自己的习惯，选择把hexo配置在哪里（比如：C:\OTHER\Program\GitHub\hexo），通过Git Shell,切换到该路径下面：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure></p>
+<p>或者可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;floder&gt;</div><div class="line">$ <span class="built_in">cd</span> &lt;floder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<h2 id="安装hexo插件"><a href="#安装hexo插件" class="headerlink" title="安装hexo插件"></a>安装hexo插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-index --save</div><div class="line">npm install hexo-generator-archive --save</div><div class="line">npm install hexo-generator-category --save</div><div class="line">npm install hexo-generator-tag --save</div><div class="line">npm install hexo-server --save</div><div class="line">npm install hexo-deployer-git --save</div><div class="line">npm install hexo-deployer-heroku --save</div><div class="line">npm install hexo-deployer-rsync --save</div><div class="line">npm install hexo-deployer-openshift --save</div><div class="line">npm install hexo-renderer-marked@0.2 --save</div><div class="line">npm install hexo-renderer-stylus@0.2 --save</div><div class="line">npm install hexo-generator-feed@1 --save</div><div class="line">npm install hexo-generator-sitemap@1 --save</div></pre></td></tr></table></figure>
+<h2 id="本地查看效果"><a href="#本地查看效果" class="headerlink" title="本地查看效果"></a>本地查看效果</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h2 id="部署到github上面"><a href="#部署到github上面" class="headerlink" title="部署到github上面"></a>部署到github上面</h2><ol>
+<li>申请一个github账号（怎么创建仓库，以及使用可以阅读官网文档<a href="https://guides.github.com/activities/hello-world/" target="_blank" rel="external">GitHub</a>）</li>
+<li>打开之前下载安装在桌面的Github，点击左上角的+，自己取一个名字，然后把Local Path选择自己习惯的位置（比如：C:\OTHER\Program\GitHub\MBlog），个人放在hexo的旁边。</li>
+<li>git Shell回到hexo文件夹下执行hexo g命令，会生成一个Public文件夹</li>
+<li>把public文件夹里面的东西拷贝到之前Local Path的根目录下面。</li>
+<li>在桌面Github上面确定提交信息后，点又上角的syn同步</li>
+<li>可以到网页的Github中心查看，并且知道自己的网址（比如：<a href="https://xmhuster.github.io/MBlog/">https://xmhuster.github.io/MBlog/</a></li>
+<li>这样就发布完成了</li>
+</ol>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>hexo提供了很多<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>可以供选择，主题点击进去都有模板可以参考修改，官网也有很好的文档。</p>
+<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>怎么写文章呢，这里是用<a href="http://markdownpad.com/" target="_blank" rel="external">Markdown</a>，语法真的非常简单，只要看一下就能使用。<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">参考文档</a><br>注意：Markdown目前还不支持Win10，但是解决办法肯定还是有的。如果是Win10系统需要下载安装一下<a href="http://www.awesomium.com/" target="_blank" rel="external">awesomium</a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Q：为什么本地的Localhost:4000页面能很好的显示主题，但是发布到Github上面却显示不了，没有渲染成功？<br>A：有几种可能性：<br>1，_config.yml里面的url没有配置好。<br>2.没有安装主题所需要的插件,下面是hexo官方原话，大家可以在themes文件夹里面主题文件夹（比如说:jacman）的Layout里面可以看到是以Swig结尾的还是Ejs结尾的，如果是EJS结尾的需要另外安装插件。(具体可以点击下面的EJS查看)</p>
+<blockquote>
+<p>Layout folder. This folder contains the theme’s template files, which define the appearance of your website. Hexo provides the Swig template engine by default, but you can easily install additional plugins to support alternative engines such as <a href="https://github.com/hexojs/hexo-renderer-ejs" target="_blank" rel="external">EJS</a>, Haml or Jade. Hexo chooses the template engine based on the file extension of the template. </p>
+</blockquote>
+<p>3.在网页版的Github上面，需要建分支，合并提交等。（不清楚的看官方文档）</p>
+<h2 id="总结感悟"><a href="#总结感悟" class="headerlink" title="总结感悟"></a>总结感悟</h2><p>1.这次从搭建到发布到github上面大概只用了一两个小时，相比于之前用了很多个晚上都没有搭建起来，我觉得是我所参考的资料不一样的原因，这次用谷歌查到的资料，思路清晰，步骤详细，方法正确。<br>  推荐一个最近刚使用并且效果不错的翻墙工具：<a href="https:/getlantern.org/" target="_blank" rel="external">Lantern</a><br>2.可以通过别人的博客了解到一个东西，但是想真正使用掌握一个知识，个人认为还是看官方文档最受益</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;h2 id=&quot;简要说明&quot;&gt;&lt;a href=&quot;#简要说明&quot; class=&quot;headerlink&quot; title=&quot;简要说明&quot;&gt;&lt;/a&gt;简要说明&lt;/h2&gt;&lt;p&gt;本篇博客是记录自己怎么搭建起这个博客，以及过程中遇到什么问题，如何解决这些问题。&lt;/p&gt;
+&lt;h2 id=&quot;了解Hexo&quot;&gt;&lt;
     
     </summary>
     
+      <category term="2016年9月" scheme="https://xmhuster.github.io/MBlog/categories/2016%E5%B9%B49%E6%9C%88/"/>
+    
+    
+      <category term="github,hexo" scheme="https://xmhuster.github.io/MBlog/tags/github-hexo/"/>
     
   </entry>
   
