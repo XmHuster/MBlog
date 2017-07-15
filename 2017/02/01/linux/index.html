@@ -2,8 +2,6 @@
 
 
 
-  
-
 
 
 
@@ -18,9 +16,11 @@
   
   
   
-    <meta name="description" content="">
+    <meta name="description" content="第一个例子linux下，指定文件file1为所有用户可读，可写，可执行，执行命令：_1。修改file1的拥有者为test，拥有组为user,执行命令:_2。chmod 776,chown testchmod 777,chown userchmod 777,chown testchmod 778,chown user题解：文件的权限
+
+rw- r– r–总共有10位，第一位表示文件的类型，-表...">
   
-  <title>Category: 2016年9月 [ HappyBird ]</title>
+  <title>关于Linux的学习 [ HappyBird ]</title>
   
     <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
   
@@ -41,6 +41,24 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/MBlog/2017/02/01/设计模式/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        设计模式
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/MBlog/2017/02/01/CC++学习/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        关于C/C++的学习
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -112,76 +130,92 @@
     <div id="content-inner">
       
       
-  <article id="page">
-    
+  <article id="post">
+    <h1>关于Linux的学习</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2017-02-01</span>
       
-        <h1 class="center-title">
-          Category
-          
-        </h1>
+        <span id = "post-title-updated">Updated at 2017-02-01</span>
       
-    
-    <ul class="category-list">
       
-        <li class="category-list-item">
-        
-          <a class="active" href="/MBlog/categories/2016年9月/">2016年9月</a>
-        
-          <span class="category-list-count">1</span>
-        </li>
-      
-    </ul>
-    
+      <span id = "post-title-categories">Category
       
       
         
-          
         
+        <a href="/MBlog/categories/2017年2月/">2017年2月</a>
+      
+      </span>
       
       
-      <div class="post-title-item">
-  
-  <a href="/MBlog/2016/09/04/hello-world/">
-  
-    怎么使用hexo在github上面搭建个人博客
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">9-4</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
+      <span id = "post-title-tags">
+      Tag
       
       
-      <a href="/MBlog/categories/2016年9月/">2016年9月</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
+        
+        
+        <a href="/MBlog/tags/linux/">linux</a>
       
+      </span>
       
-      <a href="/MBlog/tags/github-hexo/">github,hexo</a>
+    </p>
     
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-      
-    
+    <p>第一个例子<br>linux下，指定文件file1为所有用户可读，可写，可执行，执行命令：<strong>_1</strong>。修改file1的拥有者为test，拥有组为user,执行命令:<strong>_2</strong>。<br>chmod 776,chown test<br>chmod 777,chown user<br>chmod 777,chown test<br>chmod 778,chown user<br>题解：<br>文件的权限</p>
+<ul>
+<li>rw- r– r–<br>总共有10位，第一位表示文件的类型，-表示非目录，d表示目录。<br>r表示可读，w表示可写，x表示可执行。<br>拥有者 组成员 其他成员  依次顺序<br>chmod 修改文件权限。<br>chmod [who] [+|-|=] [mode] 文件名<br>who 可选的为<br>u user 即文件或者目录所有者<br>g group 表示与文件所有者有相同的组ID的所有成员<br>o other 表示其他用户<br>a all 表示所有用户，它也是系统默认的。</li>
+</ul>
+<ul>
+<li>添加某个权限</li>
+</ul>
+<ul>
+<li>取消某个权限<br>= 赋予给定权限并取消其他用户权限。</li>
+</ul>
+<p>mode<br>r 可读<br>w 可写<br>x 可执行</p>
+<p>例子<br>chmod u+r,g+r test.txt</p>
+<p>另外一种还可以是 使用数字的。<br>0 表示没有权限 ，1 表示可执行， 2 表示可写，4表示可读。<br>格式应为3个从0到7的数，分别代表拥有者 组成员 其他成员<br>chmod [mode] 文件名<br>例子<br>chmod 777 text.txt</p>
+<p>chgrp命令<br>功能：改变文件或目录所属的组。<br>语法：chgrp [选项] group filename<br>该命令改变指定指定文件所属的用户组。其中group可以是用户组ID，也可以是/etc/group文件中用户组的组名。文件名是以空格分开的要改变属组的文件列表，支持通配符。如果用户不是该文件的属主或超级用户，则不能改变该文件的组。</p>
+<p>该命令的各选项含义为：</p>
+<ul>
+<li>R 递归式地改变指定目录及其下的所有子目录和文件的属组。<br>例1：$ chgrp - R book /opt/local /book<br>改变/opt/local /book/及其子目录下的所有文件的属组为book。</li>
+</ul>
+<p>chown 命令</p>
+<p>功能：更改某个文件或目录的属主和属组。这个命令也很常用。例如root用户把自己的一个文件拷贝给用户xu，为了让用户xu能够存取这个文件，root用户应该把这个文件的属主设为xu，否则，用户xu无法存取这个文件。</p>
+<p>语法：chown ［选项］ [用户名称:组名称] 文件</p>
+<p>说明：chown将指定文件的拥有者改为指定的用户或组。用户可以是用户名或用户ID。组可以是组名或组ID。文件是以空格分开的要改变权限的文件列表，支持通配符。</p>
+<p>该命令的各选项含义如下：</p>
+<ul>
+<li>R 递归式地改变指定目录及其下的所有子目录和文件的拥有者。</li>
+<li>v 显示chown命令所做的工作。<br>例1：把文件shiyan.c的所有者改为wang。<br>$ chown wang shiyan.c<br>例2：把目录/his及其下的所有文件和子目录的属主改成wang，属组改成users。<br>$ chown -R wang:users /his</li>
+</ul>
+<p>所以刚才那一题的答案是第三个。</p>
+
   </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    
+  </div>
+</div>
 
   
+<nav id="pagination">
+  
+    <a href="/MBlog/2017/02/01/设计模式/" class="prev">&larr; Prev post 设计模式</a>
+  
+
+  
+
+  
+    <a href="/MBlog/2017/02/01/CC++学习/" class="next">Next post 关于C/C++的学习 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
@@ -301,6 +335,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "D7CCC8";
