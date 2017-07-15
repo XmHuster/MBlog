@@ -1,0 +1,389 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="xie mei">
+  
+  
+  
+  
+    <meta name="description" content="引言本篇博客是记录自己AC LeetCode71 Simplify Path这一题的过程中所遇到的一些问题和想法。
+题目Given an absolute path for a file (Unix-style), simplify it.
+For example,path = “/home/“, =&gt; “/home”path = “/a/./b/../../c/“, =&gt; “/...">
+  
+  <title>LeetCode71 Simplify Path C++题解 [ HappyBird ]</title>
+  
+    <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
+  
+  
+    <link rel="shortcut icon" href="/MBlog/img/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/MBlog/css/random.css">
+<link rel="stylesheet" href="/MBlog/css/vegas.min.css">
+<link rel="stylesheet" href="/MBlog/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/MBlog/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/MBlog/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/MBlog/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/MBlog/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/MBlog/2017/02/01/CC++学习/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        关于C/C++的学习
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/MBlog/2017/01/01/STL/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        C++ STL的学习
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">HappyBird</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/MBlog/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/XmHuster/MBlog">GitHub</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>LeetCode71 Simplify Path C++题解</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2017-01-28</span>
+      
+        <span id = "post-title-updated">Updated at 2017-01-28</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/MBlog/categories/2017年1月/">2017年1月</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/MBlog/tags/leetCode/">leetCode</a>
+      
+      </span>
+      
+    </p>
+    
+    <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>本篇博客是记录自己AC LeetCode71 Simplify Path这一题的过程中所遇到的一些问题和想法。</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given an absolute path for a file (Unix-style), simplify it.</p>
+<p>For example,<br>path = “/home/“, =&gt; “/home”<br>path = “/a/./b/../../c/“, =&gt; “/c”</p>
+<p>Corner Cases:<br>Did you consider the case where path = “/../“?<br>In this case, you should return “/“.<br>Another corner case is the path might contain multiple slashes ‘/‘ together, such as “/home//foo/“.<br>In this case, you should ignore redundant slashes and return “/home/foo”.<br>Subscribe to see which companies asked this question</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>看完题目的时候并不是对这一题特别的理解，可能是对目录的这个概念并不是非常了解，所以是在各种看测试用例中慢慢的理解了题目的意思。</p>
+<p>这题中的path的分割点是‘/’，一开始我的理解并没有想到说用特殊的C++函数或者方法直接根据‘/’符号把path分开，而是用stack一次遍历path，当遇到什么情况应该怎么处理，下面就是分析一些会遇到哪些情况。</p>
+<ol>
+<li>当出现的是’.’，并且后面跟着的是’/‘或者为空的时候，那么就直接忽略这个点。</li>
+<li>当出现的是’..’时候，把之前在stack中的弹出。（之前还犯了一个错误就是以为有..出现就把stack清空了。）</li>
+<li>当出现两个//的时候要剔除一个。</li>
+<li>当最后多了/的时候要去掉。如：/home/，应该变成/home，当/为最后一个的时候要保留，如/../。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>下面是我根据上面的理解写出来的代码。</p>
+<pre><code>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">string simplifyPath(string path) &#123;</div><div class="line">        string ans=&quot;&quot;;</div><div class="line">        int len = 0;</div><div class="line">        int count = 0;</div><div class="line">        while(len &lt; path.length())&#123;</div><div class="line">            while(path[len] == &apos;.&apos; )&#123;</div><div class="line">                ans.push_back(path[len]);</div><div class="line">                count++;</div><div class="line">                len++;</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">            if(count == 2 &amp;&amp; (path[len] == &apos;/&apos; || len == path.length()))&#123;</div><div class="line">                int level = 0;</div><div class="line">                while(ans.length() &gt; 1 &amp;&amp; level != 2)&#123;</div><div class="line">                    if(ans.back() == &apos;/&apos;)&#123;</div><div class="line">                        ++level;</div><div class="line">                    &#125;</div><div class="line">                    ans.pop_back();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if(count == 1 &amp;&amp; (path[len] == &apos;/&apos; || len == path.length()))&#123;</div><div class="line">                ans.pop_back();</div><div class="line">            &#125;</div><div class="line">            count = 0;</div><div class="line">            if(path.length() == len)&#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            if(ans.length() != 0 &amp;&amp; path[len] == &apos;/&apos; &amp;&amp; ans.back() == &apos;/&apos;)&#123;</div><div class="line">                len++;</div><div class="line">            &#125;else&#123;</div><div class="line">                ans.push_back(path[len]);</div><div class="line">                len++;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">  </div><div class="line">        if(ans.back() == &apos;/&apos;)&#123;</div><div class="line">            if(ans.length() &gt; 1)&#123;</div><div class="line">                ans.pop_back();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return ans;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+</code></pre>
+
+<p>提交一下代码，发现用了56ms,看到这又臭又长的代码，时间还花费了这么多。于是我就看来discuss中其他人简洁的代码，下面也介绍一下别人的思路代码。<br>ps:其实后来发现，我的这个运行的速度还是很快的，超过99.90%的cpp提交，之前花的时间多是应该我之前为了测试用的cout语句没有删掉，这个是很耗费时间的。</p>
+<h3 id="另外一个思路"><a href="#另外一个思路" class="headerlink" title="另外一个思路"></a>另外一个思路</h3><p>这个思路就是利用c++的stringstream类根据’/‘来对path进行分割，分成一个个string,从而进行判断。</p>
+<p>判断的规则如下：</p>
+<ol>
+<li>‘.’ or ‘’（空的这种情况，其实就相当于提示的//这种情况），针对这种情况直接不用处理，再进行判断即可。</li>
+<li>‘..’ 这种情况再分为两种情况，如果容器中不为空的时候，就pop一下，如果为空，那么就不处理。</li>
+<li>其他情况就是把分割出来的string装入到容器里面。</li>
+</ol>
+<p>最后如果容器为空的话，直接输出’/‘，如果不为空的把，把它组装起来。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>自己也按照这个思路实现了一遍。</p>
+<pre><code>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">string simplifyPath(string path) &#123;</div><div class="line"></div><div class="line">        string ans=&quot;&quot;,temp=&quot;&quot;;</div><div class="line">        vector&lt;string&gt; str;</div><div class="line">        stringstream ss(path);</div><div class="line">        while(getline(ss,temp,&apos;/&apos;))&#123;</div><div class="line">            if(temp == &quot;.&quot; || temp == &quot;&quot;) continue;</div><div class="line">            if(temp == &quot;..&quot;)&#123;</div><div class="line">                if(!str.empty()) str.pop_back();</div><div class="line">            &#125;else&#123;</div><div class="line">                str.push_back(temp);  </div><div class="line">            &#125;  </div><div class="line">        &#125;</div><div class="line">        for(auto i : str)&#123;</div><div class="line">            ans += &apos;/&apos; + i;</div><div class="line">        &#125;</div><div class="line">        return ans.length() == 0 ? &quot;/&quot; : ans;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+</code></pre>
+
+
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#另外一个思路"><span class="toc-text">另外一个思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/MBlog/2017/02/01/CC++学习/" class="prev">&larr; Prev post 关于C/C++的学习</a>
+  
+
+  
+
+  
+    <a href="/MBlog/2017/01/01/STL/" class="next">Next post C++ STL的学习 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by xie mei using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/XmHuster/MBlog">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/xmfearless">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/xmfearless">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/MBlog/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/MBlog/js/vegas.min.js"></script>
+  
+    <script src="/MBlog/js/random.js"></script>
+  
+    <script src="/MBlog/js/highlight.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/MBlog/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "D7CCC8";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/MBlog/css/sprite.svg'});
+</script>
+</body>
+</html>
+

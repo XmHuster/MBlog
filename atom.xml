@@ -5,7 +5,7 @@
   <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
-  <updated>2016-09-10T16:31:36.354Z</updated>
+  <updated>2017-07-15T04:10:38.478Z</updated>
   <id>https://xmhuster.github.io/MBlog/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xmhuster.github.io/MBlog/2016/09/04/hello-world/"/>
     <id>https://xmhuster.github.io/MBlog/2016/09/04/hello-world/</id>
     <published>2016-09-04T10:47:13.158Z</published>
-    <updated>2016-09-10T16:31:36.354Z</updated>
+    <updated>2017-07-15T04:10:38.478Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><p>本篇博客是记录自己怎么搭建起这个博客，以及过程中遇到什么问题，如何解决这些问题。</p>
 <h2 id="了解Hexo"><a href="#了解Hexo" class="headerlink" title="了解Hexo"></a>了解Hexo</h2><ul>
@@ -48,6 +48,7 @@
 </ol>
 <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>hexo提供了很多<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>可以供选择，主题点击进去都有模板可以参考修改，官网也有很好的文档。</p>
 <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>怎么写文章呢，这里是用<a href="http://markdownpad.com/" target="_blank" rel="external">Markdown</a>，语法真的非常简单，只要看一下就能使用。<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">参考文档</a><br>注意：Markdown目前还不支持Win10，但是解决办法肯定还是有的。如果是Win10系统需要下载安装一下<a href="http://www.awesomium.com/" target="_blank" rel="external">awesomium</a></p>
+<h2 id="怎么使用Disqus安装评论"><a href="#怎么使用Disqus安装评论" class="headerlink" title="怎么使用Disqus安装评论"></a>怎么使用Disqus安装评论</h2><p>1.首先到Disqus官网注册一下。<br>2.GetStart-&gt;I want to install Disqus on my site-&gt;create a new site(填写一些名称和自己的网站地址)-&gt;save。这样子就完成了并且生成了一个shortname。<br>3.在hexo目录下的config.yml里面配置一下。我的版本是有这个disqus_shortname: 之前把之前的shortname写上去就可以了。</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Q：为什么本地的Localhost:4000页面能很好的显示主题，但是发布到Github上面却显示不了，没有渲染成功？<br>A：有几种可能性：<br>1，_config.yml里面的url没有配置好。<br>2.没有安装主题所需要的插件,下面是hexo官方原话，大家可以在themes文件夹里面主题文件夹（比如说:jacman）的Layout里面可以看到是以Swig结尾的还是Ejs结尾的，如果是EJS结尾的需要另外安装插件。(具体可以点击下面的EJS查看)</p>
 <blockquote>
 <p>Layout folder. This folder contains the theme’s template files, which define the appearance of your website. Hexo provides the Swig template engine by default, but you can easily install additional plugins to support alternative engines such as <a href="https://github.com/hexojs/hexo-renderer-ejs" target="_blank" rel="external">EJS</a>, Haml or Jade. Hexo chooses the template engine based on the file extension of the template. </p>
