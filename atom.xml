@@ -5,7 +5,7 @@
   <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
-  <updated>2017-07-15T04:10:38.478Z</updated>
+  <updated>2017-07-15T08:20:17.041Z</updated>
   <id>https://xmhuster.github.io/MBlog/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xmhuster.github.io/MBlog/2016/09/04/hello-world/"/>
     <id>https://xmhuster.github.io/MBlog/2016/09/04/hello-world/</id>
     <published>2016-09-04T10:47:13.158Z</published>
-    <updated>2017-07-15T04:10:38.478Z</updated>
+    <updated>2017-07-15T08:20:17.041Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><p>本篇博客是记录自己怎么搭建起这个博客，以及过程中遇到什么问题，如何解决这些问题。</p>
 <h2 id="了解Hexo"><a href="#了解Hexo" class="headerlink" title="了解Hexo"></a>了解Hexo</h2><ul>
@@ -40,7 +40,7 @@
 <h2 id="部署到github上面"><a href="#部署到github上面" class="headerlink" title="部署到github上面"></a>部署到github上面</h2><ol>
 <li>申请一个github账号（怎么创建仓库，以及使用可以阅读官网文档<a href="https://guides.github.com/activities/hello-world/" target="_blank" rel="external">GitHub</a>）</li>
 <li>打开之前下载安装在桌面的Github，点击左上角的+，自己取一个名字，然后把Local Path选择自己习惯的位置（比如：C:\OTHER\Program\GitHub\MBlog），个人放在hexo的旁边。</li>
-<li>git Shell回到hexo文件夹下执行hexo g命令，会生成一个Public文件夹</li>
+<li>git Shell回到hexo文件夹下执行hexo g命令，会生成一个Public文件夹。<br>PS:<br>$ hexo g == hexo generate（生成静态文件）<br>$ hexo s == hexo server（启动服务器）<br>$ hexo d == hexo deploy(部署到github上面。)</li>
 <li>把public文件夹里面的东西拷贝到之前Local Path的根目录下面。</li>
 <li>在桌面Github上面确定提交信息后，点又上角的syn同步</li>
 <li>可以到网页的Github中心查看，并且知道自己的网址（比如：<a href="https://xmhuster.github.io/MBlog/">https://xmhuster.github.io/MBlog/</a></li>
