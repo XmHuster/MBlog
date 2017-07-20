@@ -5,7 +5,7 @@
   <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
-  <updated>2017-07-15T08:33:27.261Z</updated>
+  <updated>2017-07-20T13:27:43.003Z</updated>
   <id>https://xmhuster.github.io/MBlog/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git使用过程中出现的一些错误</title>
+    <link href="https://xmhuster.github.io/MBlog/2017/07/20/gitError/"/>
+    <id>https://xmhuster.github.io/MBlog/2017/07/20/gitError/</id>
+    <published>2017-07-20T10:10:37.184Z</published>
+    <updated>2017-07-20T13:27:43.003Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当输入git pull时，出现以下错误。<br>ssh: Could not resolve hostname git.tucodec.com: Name or service not known<br>fatal: Could not read from remote repository.</p>
+<p>Please make sure you have the correct access rights<br>and the repository exists.</p>
+<p>这种连不上的情况，其实就是网络不好，或者时使用了VPN,然后VPN出现了问题，检查一下就可以了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题一&quot;&gt;&lt;a href=&quot;#问题一&quot; class=&quot;headerlink&quot; title=&quot;问题一&quot;&gt;&lt;/a&gt;问题一&lt;/h3&gt;&lt;p&gt;当输入git pull时，出现以下错误。&lt;br&gt;ssh: Could not resolve hostname git.tucode
+    
+    </summary>
+    
+      <category term="2017年7月" scheme="https://xmhuster.github.io/MBlog/categories/2017%E5%B9%B47%E6%9C%88/"/>
+    
+    
+      <category term="git" scheme="https://xmhuster.github.io/MBlog/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>怎么使用hexo在github上面搭建个人博客</title>
