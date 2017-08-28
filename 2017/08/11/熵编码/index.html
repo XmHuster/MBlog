@@ -1,8 +1,6 @@
 
 
 
-  
-
 
 
 
@@ -18,9 +16,10 @@
   
   
   
-    <meta name="description" content="">
+    <meta name="description" content="熵编码1、什么是熵编码？熵编码就是指按信息熵原理进行的无损编码方式，无损编码也是有损编码视频编码中一个关键的模块，它处于视频压缩系统的末端。熵编码把一系列用来表示视频序列的元素符号转变成一个用来传输或存储的压缩码流，输入的符号可能包括量化系数，运动矢量信息，预测模式信息等。熵编码可以有效的去除这些视频元素符号的统计冗余，是保证视频熵编码效率的重要工具。
+2、那么什么是信息熵？我们平时所说的消...">
   
-  <title>标签: git [ HappyBird ]</title>
+  <title>熵编码 [ HappyBird ]</title>
   
     <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
   
@@ -41,6 +40,24 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/MBlog/2017/08/16/全局变量是否会多次初始化的问题/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/MBlog/2017/07/20/Ksum问题/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        kSum问题汇总
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -112,90 +129,74 @@
     <div id="content-inner">
       
       
-  <div id="tag">
-    <h1>git</h1>
-    
+  <article id="post">
+    <h1>熵编码</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2017-08-11</span>
+      
+        <span id = "post-title-updated">修改于 2017-08-17</span>
+      
+      
+      <span id = "post-title-categories">分类
       
       
         
+        
+        <a href="/MBlog/categories/2017年8月/">2017年8月</a>
+      
+      </span>
       
       
-    
+      <span id = "post-title-tags">
+      标签
       
       
         
-          
         
+        <a href="/MBlog/tags/视频编码/">视频编码</a>
       
+      </span>
       
-      <div class="post-title-item">
-  
-  <a href="/MBlog/2017/07/20/git学习/">
-  
-    git学习
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">7-20</span>
+    </p>
     
-    <span id = "post-title-categories">分类
-    
-    
-      
-      
-      <a href="/MBlog/categories/2017年8月/">2017年8月</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    标签
-    
-    
-      
-      
-      <a href="/MBlog/tags/git/">git</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-      
-    
-      
-      
-        
-      
-      
-    
+    <h4 id="熵编码"><a href="#熵编码" class="headerlink" title="熵编码"></a>熵编码</h4><p>1、什么是熵编码？<br>熵编码就是指按信息熵原理进行的无损编码方式，无损编码也是有损编码视频编码中一个关键的模块，它处于视频压缩系统的末端。熵编码把一系列用来表示视频序列的元素符号转变成一个用来传输或存储的压缩码流，输入的符号可能包括量化系数，运动矢量信息，预测模式信息等。熵编码可以有效的去除这些视频元素符号的统计冗余，是保证视频熵编码效率的重要工具。</p>
+<p>2、那么什么是信息熵？<br>我们平时所说的消息是信息吗？<br>信息是存在于消息之后，消息中可以消除不确定因素的部分可以称之为信息。香农给出的信息的定义是：信息是事物运动状态或存在方式的不确定性的描述。<br>那么信息是否可以度量呢？<br>信息是可以度量的。因为不确定性是可以度量的。所以信息也是可以度量的。<br>不确定性越大，那么信息量就越大，反之，就越小。</p>
+<p>比如：我明天会穿着运动服去打球。<br>这一句话就可以消除几个不确定性，我明天穿什么衣服呢？穿运动服。我明天去干什么呢？去打球。所以这句话就是存在着信息。</p>
+<p>再比如：鞋子穿久了会破掉。 鞋子穿久了肯定会破的。所以这一句话没有消除任何不确定性，所以这句话没有任何信息量。所以这也就是我们说的废话。</p>
+<p>假设某一信源的概率空间为$\left[ \begin{matrix} x\ p\left( x\right) \end{matrix} \right] =\left[ \begin{matrix} x<em>{1},x</em>{2},x<em>{q}\ p\left( x</em>{1}\right) p\left( x<em>{2}\right) </em>{\ast \ast \ast \ast }p\left( x_{q}\right) \end{matrix} \right]$</p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#熵编码"><span class="toc-text">熵编码</span></a></li></ol>
   </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/MBlog/2017/08/16/全局变量是否会多次初始化的问题/" class="prev">&larr; 上一篇 </a>
+  
 
   
 
+  
+    <a href="/MBlog/2017/07/20/Ksum问题/" class="next">下一篇 kSum问题汇总 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
       
       
+      
+      <div id="disqus_thread"></div>
       
     </div>
   </div>
@@ -212,6 +213,29 @@
 
 </div>
 
+
+  <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//https-xmhuster-github-io-mblog.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
 <div id="user-card">
@@ -312,6 +336,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "D7CCC8";

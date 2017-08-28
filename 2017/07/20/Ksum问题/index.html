@@ -1,0 +1,393 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="xie mei">
+  
+  
+  
+  
+    <meta name="description" content="LeetCode上面有一系列的kSum问题，这里对kSum进行一个总结。
+Two Sum题目：Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+You may assume that each input would have ex...">
+  
+  <title>kSum问题汇总 [ HappyBird ]</title>
+  
+    <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
+  
+  
+    <link rel="shortcut icon" href="/MBlog/img/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/MBlog/css/random.css">
+<link rel="stylesheet" href="/MBlog/css/vegas.min.css">
+<link rel="stylesheet" href="/MBlog/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/MBlog/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/MBlog/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/MBlog/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/MBlog/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/MBlog/2017/08/11/熵编码/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        熵编码
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/MBlog/2017/07/20/git学习/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        git学习
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">HappyBird</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/MBlog/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/XmHuster/MBlog">GitHub</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>kSum问题汇总</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2017-07-20</span>
+      
+        <span id = "post-title-updated">修改于 2017-08-26</span>
+      
+      
+      <span id = "post-title-categories">分类
+      
+      
+        
+        
+        <a href="/MBlog/categories/2017年8月/">2017年8月</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      标签
+      
+      
+        
+        
+        <a href="/MBlog/tags/Leetcode/">Leetcode</a>
+      
+      </span>
+      
+    </p>
+    
+    <p>LeetCode上面有一系列的kSum问题，这里对kSum进行一个总结。</p>
+<h4 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a><a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="external">Two Sum</a></h4><p>题目：<br>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:<br>Given nums = [2, 7, 11, 15], target = 9,</p>
+<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+<p>题目分析：一开始考虑说排序，然后再从两头向中间靠拢，就可以求出答案了。但是后来发现这题是要求输出下标，而不是数它本身，所以排序的方法就行不通了。所以就考虑使用haspMap的方式。</p>
+<p>解法一:<br>步骤一：先把整个数组进行排序，然后从两端缩进，看想加的和是否为目标数，这个是最常规的想法。这题由于是要输出下标而不是数值本身，所以还要遍历一遍数组找到对应的下标。<br>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        if(nums.size() == 0)&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        vector&lt;int&gt; temp;</div><div class="line">        temp = nums;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        int len = nums.size();</div><div class="line">        int start = 0;</div><div class="line">        int end = len - 1;</div><div class="line">        while(start &lt; end)&#123;</div><div class="line">            if(nums[start] + nums[end] == target)&#123;</div><div class="line">                for(int i = 0; i &lt; temp.size(); i++)&#123;</div><div class="line">                    if(temp[i] == nums[start] || temp[i] == nums[end])&#123;</div><div class="line">                        res.push_back(i);</div><div class="line">                        if(res.size() == 2) break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;else if(nums[start] + nums[end] &lt; target)&#123;</div><div class="line">                start++;</div><div class="line">            &#125;else&#123;</div><div class="line">                end--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>解法二：<br>步骤一： 先把所有的数都加入到map当中，因为数组中有重复的数存在，所以就没有办法让map中对应的值为它的下标，到时候直接取出来就行。而是让它的值加一。<br>步骤二：通过一个循环，把当前数对应的map值减一，然后再调用map判断这个值是否存在，并且它的值是否大于０，如果都满足，则说明找到了答案。<br>步骤三： 这个时候需要根据我们找到的那个答案的值，然后去找对应的下标。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        if(nums.size() == 0)&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        map&lt;int,int&gt; m;</div><div class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</div><div class="line">            if(m.find(nums[i]) != m.end())&#123;</div><div class="line">                m[nums[i]]++;</div><div class="line">            &#125;else&#123;</div><div class="line">                m[nums[i]] = 1;</div><div class="line">            &#125;</div><div class="line">        &#125;//把所有的值都放到map里面去。</div><div class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</div><div class="line">            int left = target - nums[i];</div><div class="line">            m[nums[i]]--;</div><div class="line">			//使用完一次就减一。下面再判断是否大于0，这样子可以防止[3,3]</div><div class="line">            if(m.find(left) != m.end() &amp;&amp; m[left] &gt; 0)&#123;</div><div class="line">                res.push_back(i);</div><div class="line">                for(int j = i+1; j &lt; nums.size(); j++)&#123;</div><div class="line">                    if(nums[j] == left)&#123;</div><div class="line">                        res.push_back(j);</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>解法三：<br>看了讨论就会发现同样是用hashmap，但是人家的运行时间可以更快，快了3ms。</p>
+<p>直接遍历，如果目标值减去当前值并没有存在map中的时候，就直接把这个值加到map当中，然后map中这个值对应的值就是它的下标。如果找到就直接返回就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        map&lt;int,int&gt; m;</div><div class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</div><div class="line">            int left = target - nums[i];</div><div class="line">            if(m.find(left) != m.end())&#123;</div><div class="line">                res.push_back(m[left]);</div><div class="line">                res.push_back(i);</div><div class="line">                return res;</div><div class="line">            &#125;</div><div class="line">            m[nums[i]] = i;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Two-Sum"><span class="toc-text">Two Sum</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/MBlog/2017/08/11/熵编码/" class="prev">&larr; 上一篇 熵编码</a>
+  
+
+  
+
+  
+    <a href="/MBlog/2017/07/20/git学习/" class="next">下一篇 git学习 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+      
+      <div id="disqus_thread"></div>
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by xie mei using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//https-xmhuster-github-io-mblog.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/XmHuster/MBlog">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/xmfearless">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/xmfearless">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/MBlog/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/MBlog/js/vegas.min.js"></script>
+  
+    <script src="/MBlog/js/random.js"></script>
+  
+    <script src="/MBlog/js/highlight.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/MBlog/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "D7CCC8";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/MBlog/css/sprite.svg'});
+</script>
+</body>
+</html>
+

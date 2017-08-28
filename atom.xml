@@ -5,7 +5,7 @@
   <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
-  <updated>2017-07-20T13:27:43.003Z</updated>
+  <updated>2017-08-26T07:13:30.421Z</updated>
   <id>https://xmhuster.github.io/MBlog/</id>
   
   <author>
@@ -16,24 +16,139 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>git使用过程中出现的一些错误</title>
-    <link href="https://xmhuster.github.io/MBlog/2017/07/20/gitError/"/>
-    <id>https://xmhuster.github.io/MBlog/2017/07/20/gitError/</id>
-    <published>2017-07-20T10:10:37.184Z</published>
-    <updated>2017-07-20T13:27:43.003Z</updated>
+    <title>碰到问题的时候该怎么处理</title>
+    <link href="https://xmhuster.github.io/MBlog/2017/08/26/%E7%A2%B0%E5%88%B0%E9%97%AE%E9%A2%98%E8%AF%A5%E6%9C%89%E7%9A%84%E6%80%81%E5%BA%A6/"/>
+    <id>https://xmhuster.github.io/MBlog/2017/08/26/碰到问题该有的态度/</id>
+    <published>2017-08-26T04:02:21.547Z</published>
+    <updated>2017-08-26T07:13:30.421Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当输入git pull时，出现以下错误。<br>ssh: Could not resolve hostname git.tucodec.com: Name or service not known<br>fatal: Could not read from remote repository.</p>
-<p>Please make sure you have the correct access rights<br>and the repository exists.</p>
-<p>这种连不上的情况，其实就是网络不好，或者时使用了VPN,然后VPN出现了问题，检查一下就可以了。</p>
+    <content type="html"><![CDATA[<h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>程序员遇到问题，遇到Bug这是在所能免的事情，当大一大二刚遇到问题的时候，那个时候可能是卖卖萌，求学长帮忙解决一下。幸好，当时碰到的几个学长都是授之以渔的，所以慢慢的就通过搜索引擎开始解决问题了。大三的时候基本上都遇到问题都是自己解决了。刚开始肯定是比较抓狂的，问题很难解决的时候是比较绝望的，这个时候如果解决了问题，所收获的成就感也是满满的。<br>等习惯了之后，碰到问题也不会绝望了，因为自信也是在慢慢中建立的，相信所有的问题都是可以被解决的。</p>
+<h4 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h4><p>在过往的程序开发当中，遇到的问题可以简单的分为10种。<br>一种是在编译器上面可以调试的，这个问题一般都是比较简单的，因为通过调试就可以找到错误，并且修改。<br>另外一种就是可以是在装一个软件的过程种出错了，或者是报了结果不是自己想要的。比如说之前的IE插件开发，需要在显示栏显示我的图标，然后程序编译没有错误，但是显示栏就是没有我的图标等之类的问题就比较复杂一些了。</p>
+<h4 id="问题应对"><a href="#问题应对" class="headerlink" title="问题应对"></a>问题应对</h4><ul>
+<li>第一种编译问题，语法，逻辑错误的话都是很简单的错误。只要调试一下就可以了。</li>
+<li>第二种问题。需要冷静分析，从头理顺思路，排除各种可能出现的错误原因。</li>
+<li><p>理解原理，得原理算法者得天下。（会有这种的感受是因为：现在工作在的公司，旁边好几个博士生，其中一个博士生就对我们所做的原理非常的清楚，所以当你问他问题的时候，你就会发现，虽然他在编程代码上可能不是非常了解，但是从原理的角度上一下子就可以看出代码是否有问题，这样子行不行。）</p>
+</li>
+<li><p>今天春招面试A家的时候，面试官问平时都是怎么解决问题的。因为没有反应过来，很长一段时间也没有敲代码了，就想到最近写的IE插件开发，因为之前从来没有接触过，时间也比较短，所以就只能按照官方文档来，正如上面说的，因为对原理和一些配置代码什么的都不是很清楚，所以当时因为一个地方写错了，就不是很清楚，只能一直不断的尝试。所以我当时就回答说，我重复的尝试。 其实找问题最好的肯定不是说一直不分析的不断重复的尝试，而是要分析问题，然后不断的排错，找原因的。</p>
+</li>
+</ul>
+<h4 id="避免问题"><a href="#避免问题" class="headerlink" title="避免问题"></a>避免问题</h4><p>写代码的时候就尽量做到每一个地方细节都很清楚，而不是大概知道干什么，或者有的干什么也不是很清楚。这样子会比较不容易出问题，或者等出了问题，也可以比较快的知道哪里出了问题，出了什么问题。</p>
+<h4 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h4><p>写这篇文章是为了记录下来自己现在的想法（如果能有其他人看到我的文章，并且从中受益，那当然是最好不过的了），因为谁都不敢保证自己之后是否能按照现在的想法执行，或者说之后因为一些事情就会忘记了现在的想法。所以内容并不是非常的丰富，但是我还是选择记录下来。并且我觉得记录下自己当下的想法，所做的事情，所遇到的问题，是一个非常好的习惯。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;问题一&quot;&gt;&lt;a href=&quot;#问题一&quot; class=&quot;headerlink&quot; title=&quot;问题一&quot;&gt;&lt;/a&gt;问题一&lt;/h3&gt;&lt;p&gt;当输入git pull时，出现以下错误。&lt;br&gt;ssh: Could not resolve hostname git.tucode
+      &lt;h4 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h4&gt;&lt;p&gt;程序员遇到问题，遇到Bug这是在所能免的事情，当大一大二刚遇到问题的时候，那个时候可能是卖卖萌，求学长帮忙解决一下。幸好，当时碰到的几个学长
     
     </summary>
     
-      <category term="2017年7月" scheme="https://xmhuster.github.io/MBlog/categories/2017%E5%B9%B47%E6%9C%88/"/>
+      <category term="2017年8月" scheme="https://xmhuster.github.io/MBlog/categories/2017%E5%B9%B48%E6%9C%88/"/>
+    
+    
+      <category term="其他" scheme="https://xmhuster.github.io/MBlog/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://xmhuster.github.io/MBlog/2017/08/16/%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E6%98%AF%E5%90%A6%E4%BC%9A%E5%A4%9A%E6%AC%A1%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://xmhuster.github.io/MBlog/2017/08/16/全局变量是否会多次初始化的问题/</id>
+    <published>2017-08-16T00:20:53.371Z</published>
+    <updated>2017-08-16T00:20:53.372Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>熵编码</title>
+    <link href="https://xmhuster.github.io/MBlog/2017/08/11/%E7%86%B5%E7%BC%96%E7%A0%81/"/>
+    <id>https://xmhuster.github.io/MBlog/2017/08/11/熵编码/</id>
+    <published>2017-08-11T08:35:43.663Z</published>
+    <updated>2017-08-17T08:38:49.940Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="熵编码"><a href="#熵编码" class="headerlink" title="熵编码"></a>熵编码</h4><p>1、什么是熵编码？<br>熵编码就是指按信息熵原理进行的无损编码方式，无损编码也是有损编码视频编码中一个关键的模块，它处于视频压缩系统的末端。熵编码把一系列用来表示视频序列的元素符号转变成一个用来传输或存储的压缩码流，输入的符号可能包括量化系数，运动矢量信息，预测模式信息等。熵编码可以有效的去除这些视频元素符号的统计冗余，是保证视频熵编码效率的重要工具。</p>
+<p>2、那么什么是信息熵？<br>我们平时所说的消息是信息吗？<br>信息是存在于消息之后，消息中可以消除不确定因素的部分可以称之为信息。香农给出的信息的定义是：信息是事物运动状态或存在方式的不确定性的描述。<br>那么信息是否可以度量呢？<br>信息是可以度量的。因为不确定性是可以度量的。所以信息也是可以度量的。<br>不确定性越大，那么信息量就越大，反之，就越小。</p>
+<p>比如：我明天会穿着运动服去打球。<br>这一句话就可以消除几个不确定性，我明天穿什么衣服呢？穿运动服。我明天去干什么呢？去打球。所以这句话就是存在着信息。</p>
+<p>再比如：鞋子穿久了会破掉。 鞋子穿久了肯定会破的。所以这一句话没有消除任何不确定性，所以这句话没有任何信息量。所以这也就是我们说的废话。</p>
+<p>假设某一信源的概率空间为$\left[ \begin{matrix} x\ p\left( x\right) \end{matrix} \right] =\left[ \begin{matrix} x<em>{1},x</em>{2},x<em>{q}\ p\left( x</em>{1}\right) p\left( x<em>{2}\right) </em>{\ast \ast \ast \ast }p\left( x_{q}\right) \end{matrix} \right]$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;熵编码&quot;&gt;&lt;a href=&quot;#熵编码&quot; class=&quot;headerlink&quot; title=&quot;熵编码&quot;&gt;&lt;/a&gt;熵编码&lt;/h4&gt;&lt;p&gt;1、什么是熵编码？&lt;br&gt;熵编码就是指按信息熵原理进行的无损编码方式，无损编码也是有损编码视频编码中一个关键的模块，它处于视频压缩系
+    
+    </summary>
+    
+      <category term="2017年8月" scheme="https://xmhuster.github.io/MBlog/categories/2017%E5%B9%B48%E6%9C%88/"/>
+    
+    
+      <category term="视频编码" scheme="https://xmhuster.github.io/MBlog/tags/%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kSum问题汇总</title>
+    <link href="https://xmhuster.github.io/MBlog/2017/07/20/Ksum%E9%97%AE%E9%A2%98/"/>
+    <id>https://xmhuster.github.io/MBlog/2017/07/20/Ksum问题/</id>
+    <published>2017-07-20T14:03:18.472Z</published>
+    <updated>2017-08-26T07:13:02.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>LeetCode上面有一系列的kSum问题，这里对kSum进行一个总结。</p>
+<h4 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a><a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="external">Two Sum</a></h4><p>题目：<br>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:<br>Given nums = [2, 7, 11, 15], target = 9,</p>
+<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+<p>题目分析：一开始考虑说排序，然后再从两头向中间靠拢，就可以求出答案了。但是后来发现这题是要求输出下标，而不是数它本身，所以排序的方法就行不通了。所以就考虑使用haspMap的方式。</p>
+<p>解法一:<br>步骤一：先把整个数组进行排序，然后从两端缩进，看想加的和是否为目标数，这个是最常规的想法。这题由于是要输出下标而不是数值本身，所以还要遍历一遍数组找到对应的下标。<br>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        if(nums.size() == 0)&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        vector&lt;int&gt; temp;</div><div class="line">        temp = nums;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        int len = nums.size();</div><div class="line">        int start = 0;</div><div class="line">        int end = len - 1;</div><div class="line">        while(start &lt; end)&#123;</div><div class="line">            if(nums[start] + nums[end] == target)&#123;</div><div class="line">                for(int i = 0; i &lt; temp.size(); i++)&#123;</div><div class="line">                    if(temp[i] == nums[start] || temp[i] == nums[end])&#123;</div><div class="line">                        res.push_back(i);</div><div class="line">                        if(res.size() == 2) break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;else if(nums[start] + nums[end] &lt; target)&#123;</div><div class="line">                start++;</div><div class="line">            &#125;else&#123;</div><div class="line">                end--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>解法二：<br>步骤一： 先把所有的数都加入到map当中，因为数组中有重复的数存在，所以就没有办法让map中对应的值为它的下标，到时候直接取出来就行。而是让它的值加一。<br>步骤二：通过一个循环，把当前数对应的map值减一，然后再调用map判断这个值是否存在，并且它的值是否大于０，如果都满足，则说明找到了答案。<br>步骤三： 这个时候需要根据我们找到的那个答案的值，然后去找对应的下标。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        if(nums.size() == 0)&#123;</div><div class="line">            return res;</div><div class="line">        &#125;</div><div class="line">        map&lt;int,int&gt; m;</div><div class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</div><div class="line">            if(m.find(nums[i]) != m.end())&#123;</div><div class="line">                m[nums[i]]++;</div><div class="line">            &#125;else&#123;</div><div class="line">                m[nums[i]] = 1;</div><div class="line">            &#125;</div><div class="line">        &#125;//把所有的值都放到map里面去。</div><div class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</div><div class="line">            int left = target - nums[i];</div><div class="line">            m[nums[i]]--;</div><div class="line">			//使用完一次就减一。下面再判断是否大于0，这样子可以防止[3,3]</div><div class="line">            if(m.find(left) != m.end() &amp;&amp; m[left] &gt; 0)&#123;</div><div class="line">                res.push_back(i);</div><div class="line">                for(int j = i+1; j &lt; nums.size(); j++)&#123;</div><div class="line">                    if(nums[j] == left)&#123;</div><div class="line">                        res.push_back(j);</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>解法三：<br>看了讨论就会发现同样是用hashmap，但是人家的运行时间可以更快，快了3ms。</p>
+<p>直接遍历，如果目标值减去当前值并没有存在map中的时候，就直接把这个值加到map当中，然后map中这个值对应的值就是它的下标。如果找到就直接返回就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt; res;</div><div class="line">        map&lt;int,int&gt; m;</div><div class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</div><div class="line">            int left = target - nums[i];</div><div class="line">            if(m.find(left) != m.end())&#123;</div><div class="line">                res.push_back(m[left]);</div><div class="line">                res.push_back(i);</div><div class="line">                return res;</div><div class="line">            &#125;</div><div class="line">            m[nums[i]] = i;</div><div class="line">        &#125;</div><div class="line">        return res;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;LeetCode上面有一系列的kSum问题，这里对kSum进行一个总结。&lt;/p&gt;
+&lt;h4 id=&quot;Two-Sum&quot;&gt;&lt;a href=&quot;#Two-Sum&quot; class=&quot;headerlink&quot; title=&quot;Two Sum&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leet
+    
+    </summary>
+    
+      <category term="2017年8月" scheme="https://xmhuster.github.io/MBlog/categories/2017%E5%B9%B48%E6%9C%88/"/>
+    
+    
+      <category term="Leetcode" scheme="https://xmhuster.github.io/MBlog/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git学习</title>
+    <link href="https://xmhuster.github.io/MBlog/2017/07/20/git%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://xmhuster.github.io/MBlog/2017/07/20/git学习/</id>
+    <published>2017-07-20T10:10:37.184Z</published>
+    <updated>2017-08-14T13:55:09.692Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="关于Git的学习"><a href="#关于Git的学习" class="headerlink" title="关于Git的学习"></a>关于Git的学习</h4><p>  这里我转载一个廖雪峰老师的博客<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰官方网站</a>，这篇博客基本命令还有原理都解释的很清楚，内容不多也不少，非常适合初学者阅读学习。</p>
+<h4 id="关于Git的一些补充"><a href="#关于Git的一些补充" class="headerlink" title="关于Git的一些补充"></a>关于Git的一些补充</h4><ol>
+<li>怎么推送本地的分支到远程的新分支上面去？<br>添加：git push origin local_branch:remote_branch<br>这个操作，local_branch必须为你本地存在的分支，remote_branch为远程分支，如果remote_branch不存在则会自动创建分支。<br>删除：git push origin :remote_branch，local_branch留空的话则是删除远程remote_branch分支。</li>
+</ol>
+<h4 id="关于Git出现的错误"><a href="#关于Git出现的错误" class="headerlink" title="关于Git出现的错误"></a>关于Git出现的错误</h4><p>Q1: 当输入git pull时，出现以下错误。<br>ssh: Could not resolve hostname git.tucodec.com: Name or service not known<br>fatal: Could not read from remote repository.</p>
+<p>Please make sure you have the correct access rights<br>and the repository exists.</p>
+<p>A: 这种连不上的情况，其实就是网络不好，或者时使用了VPN,然后VPN出现了问题，检查一下就可以了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;关于Git的学习&quot;&gt;&lt;a href=&quot;#关于Git的学习&quot; class=&quot;headerlink&quot; title=&quot;关于Git的学习&quot;&gt;&lt;/a&gt;关于Git的学习&lt;/h4&gt;&lt;p&gt;  这里我转载一个廖雪峰老师的博客&lt;a href=&quot;https://www.liaoxuef
+    
+    </summary>
+    
+      <category term="2017年8月" scheme="https://xmhuster.github.io/MBlog/categories/2017%E5%B9%B48%E6%9C%88/"/>
     
     
       <category term="git" scheme="https://xmhuster.github.io/MBlog/tags/git/"/>
