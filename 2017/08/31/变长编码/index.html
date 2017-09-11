@@ -1,0 +1,486 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="xie mei">
+  
+  
+  
+  
+    <meta name="description" content="变长编码在视频编码当中，有存在很多的冗余，各种方法的设计都是为了消除这些冗余，从而在压缩程度上达到最好。
+在编码过程中，如果我们要编码的数的范围时从0到7，那么0和1只需要一个比特就可以表示，7需要三个比特，那么我们都统一用三个比特进行表示的话。那么小的数就会浪费一些比特。
+所以在这种情况下，我们就出现了变长编码。也就出现了一些生成变长码的方法，这里只说明其中比较重要的两个，哥伦布编码（EG...">
+  
+  <title>变长编码二元化 [ HappyBird ]</title>
+  
+    <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
+  
+  
+    <link rel="shortcut icon" href="/MBlog/img/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/MBlog/css/random.css">
+<link rel="stylesheet" href="/MBlog/css/vegas.min.css">
+<link rel="stylesheet" href="/MBlog/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/MBlog/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/MBlog/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/MBlog/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/MBlog/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/MBlog/2017/08/26/碰到问题该有的态度/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        碰到问题的时候该怎么处理
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">HappyBird</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/MBlog/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/MBlog/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/XmHuster/MBlog">GitHub</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>变长编码二元化</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2017-08-31</span>
+      
+        <span id = "post-title-updated">修改于 2017-09-02</span>
+      
+      
+      <span id = "post-title-categories">分类
+      
+      
+        
+        
+        <a href="/MBlog/categories/2017年9月/">2017年9月</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      标签
+      
+      
+        
+        
+        <a href="/MBlog/tags/视频编码/">视频编码</a>
+      
+      </span>
+      
+    </p>
+    
+    <h4 id="变长编码"><a href="#变长编码" class="headerlink" title="变长编码"></a>变长编码</h4><p>在视频编码当中，有存在很多的冗余，各种方法的设计都是为了消除这些冗余，从而在压缩程度上达到最好。</p>
+<p>在编码过程中，如果我们要编码的数的范围时从0到7，那么0和1只需要一个比特就可以表示，7需要三个比特，那么我们都统一用三个比特进行表示的话。那么小的数就会浪费一些比特。</p>
+<p>所以在这种情况下，我们就出现了变长编码。也就出现了一些生成变长码的方法，这里只说明其中比较重要的两个，哥伦布编码（EGK）和截断莱斯（TR）。</p>
+<h4 id="K阶哥伦布编码"><a href="#K阶哥伦布编码" class="headerlink" title="K阶哥伦布编码"></a>K阶哥伦布编码</h4><p>一个非负整数的K阶哥伦布码的生成步骤：</p>
+<p>1、将需要编码的整数以二进制的形式写出，去掉最低的K个比特位，之后加1。</p>
+<p>2、统计剩下的比特数，将次数减一，就是需要增加的前缀零的个数。</p>
+<p>3、把之前去掉的K个比特位补回到比特串的末尾。</p>
+<p>现在举个例子说明，比如说整数5的1阶码：</p>
+<p>1、5的二进制形式时 101，那么去掉最低1位的比特位，就变成10，之后再加1，就是11。<br>2、11就是2个比特数，把2减一就是1，也就是需要补1个前缀0，那么现在的比特就变成011。<br>3、把之前去掉的最低1位的1补回到比特串的结尾，就变成0111，这就是整数5的1阶哥伦布码。</p>
+<p>编码完，我们现在要知道怎么解码。<br>解码原理：根部编码的时候，我们知道第一步去掉k个比特，第三步的时候补上了，所以这k个比特的值是没有改变的，就是在第一步的最后，我们还加了一个1，那么我们在解码的时候就是要将这个1减掉。那么因为第三步又加了k个比特，就相当于第一步的那个1，是2^k的大小，所以就是把所有的值减去2^k,就是解码会来的值。<br>例如：<br>上面的整数5的2阶码为 01001，那么这个二进制的值为9-2^2 = 5。<br>或者按照书中的codeNum = 2^(m+k)-2^k+value(这个值为后m+k个二进制的值)也是一样的。</p>
+<p>接着，我们用代码实现一下。</p>
+<p>编码的时候：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    int value = 5;//这个就是需要编码的值</div><div class="line">    int pre = (value &gt;&gt; k)+1;//这个实现的就是第一步。</div><div class="line">    int m = (int)log2(pre);//获取前面的0的个数，之前还不知道怎么取，</div><div class="line">//还用一个变量右移然后求出个数。也就是第二步。</div><div class="line">    int last = value - ((value&gt;&gt;k)&lt;&lt;k);//求出右移k的比特，因为之后要加到比特串后面。</div><div class="line">    pre = pre &lt;&lt; (32 - (2*m+1));//把前半部分比特移动最左边，我们之后好一个一个取出来传输。</div><div class="line">    int res = pre | (last&lt;&lt;(32-(2*m+k+1)));//这个就是最后要编码的值。也就是0111 后面还有很多零。</div><div class="line">    unsigned int mark = 0x80000000;//这边一定要用无符号，不然的话有符号，右移的话会根据符号进行填充左边的值，而不是填充0。</div><div class="line">    for(int i = 0; i &lt; 2*m+k+1; i++)&#123;</div><div class="line">        int bit = !!(mark &amp; res);//取出每一个bit。</div><div class="line">        printf(&quot;%d\t&quot;,bit);</div><div class="line">        put_cabac_bypass(enc_context.cabac_context,bit);</div><div class="line">        mark &gt;&gt;= 1;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>解码的时候：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int value = 0;</div><div class="line">   int m = 0;</div><div class="line">   int k = 1;</div><div class="line">   while(get_cabac_bypass(dec_context.cabac_context) == 0)&#123;</div><div class="line">       m++;//知道前面有多少个零。</div><div class="line">   &#125;</div><div class="line">   for(int i = 0; i &lt; m+k; i++)&#123;</div><div class="line">       value = (value &lt;&lt; 1) + get_cabac_bypass(dec_context.cabac_context);//求出后面的值。</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   int res = ((1&lt;&lt;(m+k))-(1&lt;&lt;k)+value);//根据之前的公式求出最后的值。</div></pre></td></tr></table></figure>
+<p>这个指数哥伦布还有有符号的时候，对应的关系是：</p>
+<p>CodeNum =  {2V-1, V &gt; 0; -2V , V &lt;= 0}</p>
+<p>CodeNum及其对应的有符号数的V</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CodeNum</th>
+<th style="text-align:center">V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">-2</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">-3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="截断莱斯编码"><a href="#截断莱斯编码" class="headerlink" title="截断莱斯编码"></a>截断莱斯编码</h4><p>一个非负整数截断莱斯码的生成步骤：</p>
+<p>在已知门限值cMax，和莱斯参数R,已经需要编码的值V，就可以获得截断莱斯的二元码串。截断莱斯码分为前缀和后缀。</p>
+<p>1、前缀的计算方法为： P = V &gt;&gt; R;</p>
+<p>2、 若P&lt;(cMac&gt;&gt;R),则前缀由P个1和一个0组成，长度为P+1。若P &gt;= (cMac&gt;&gt;R)，则由（cMax&gt;&gt;R）个1组成，长度为（cMac&gt;&gt;R）。</p>
+<p>2、当V<cmax时，其后缀值为s =="" v="" -="" （p="" <<r）。后缀码为s的二元化串，长度为r。当v="">=cMax的时候没有后缀值。</cmax时，其后缀值为s></p>
+<p>PS: 其实当R设置为0的时候，也就是让它没有后缀码。</p>
+<p>在代码实现之前，我们可以把截断莱斯码列出来看一下。</p>
+<p>cMax = 6, r = 1</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Value</th>
+<th style="text-align:center">prefix</th>
+<th style="text-align:center">suffix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:center">111</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>同样，我们代码实现一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int value = i;</div><div class="line">int r = 1;</div><div class="line">int cMax = 6;</div><div class="line">int p = value &gt;&gt; r;//这个实现的就是第一步。</div><div class="line">int pre = 0;</div><div class="line">int res = 0;</div><div class="line">unsigned int mark = 0x80000000;</div><div class="line">if((value&gt;&gt;r) &lt; (cMax&gt;&gt;r))&#123;</div><div class="line">    if(p)&#123;</div><div class="line">        pre = 0xffffffff &lt;&lt; (32-p);</div><div class="line">    &#125;</div><div class="line">    int s = value-(p&lt;&lt;r);</div><div class="line">    res = pre | s &lt;&lt;(32-r-p-1);</div><div class="line">    for(int i = 0; i &lt; p+1+r; i++)&#123;</div><div class="line">        int bit = !!(mark &amp; res);</div><div class="line">        put_cabac_bypass(enc_context.cabac_context,bit);</div><div class="line">        mark &gt;&gt;= 1;</div><div class="line">    &#125;</div><div class="line">&#125;else&#123;</div><div class="line">    res = 0xffffffff &lt;&lt;(32-(cMax&gt;&gt;r));</div><div class="line">    for(int i = 0; i &lt; (cMax&gt;&gt;r); i++)&#123;</div><div class="line">        int bit = !!(mark &amp; res);</div><div class="line">        put_cabac_bypass(enc_context.cabac_context,bit);</div><div class="line">        mark &gt;&gt;= 1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解码代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int value = 0;</div><div class="line">      int r = 1;</div><div class="line">      int cMax = 6;</div><div class="line">      int p = 0;</div><div class="line">      int t = cMax &gt;&gt; r;</div><div class="line">      while(get_cabac_bypass(dec_context.cabac_context) == 1 &amp;&amp; p &lt; t)&#123;</div><div class="line">          p++;</div><div class="line">      &#125;</div><div class="line">      if(p &gt;= t)&#123;</div><div class="line">          value = cMax;</div><div class="line">      &#125;else&#123;</div><div class="line">          int suf = 0;</div><div class="line">          for(int i = 0; i &lt; r; i++)&#123;</div><div class="line">              suf = (suf &lt;&lt; 1) + get_cabac_bypass(dec_context.cabac_context);</div><div class="line">          &#125;</div><div class="line">          value = (p&lt;&lt;r) + suf;</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<p>通过上面的分析，我们会发现，这个cMax的值和莱斯参数R不是随便设置都可以的。<br>我们知道，当R = 0和 Value = cMax的这两种情况是没有后缀码的。</p>
+<p>但是如果cMax = 7 ，R = 1。那么当Value = 6的时候的前缀码等于Value = 7的前缀码，但是一个有后缀，一个无后缀，我们在解码的时候就没有办法确定。所以cMax = 7,R = 1。这种设置就是不合理的。</p>
+<p>所以截断莱斯还会配合着指数哥伦布使用。</p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#变长编码"><span class="toc-text">变长编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#K阶哥伦布编码"><span class="toc-text">K阶哥伦布编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#截断莱斯编码"><span class="toc-text">截断莱斯编码</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/MBlog/2017/08/26/碰到问题该有的态度/" class="next">下一篇 碰到问题的时候该怎么处理 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+      
+      <div id="disqus_thread"></div>
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by xie mei using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//https-xmhuster-github-io-mblog.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/XmHuster/MBlog">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/xmfearless">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/xmfearless">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/MBlog/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/MBlog/js/vegas.min.js"></script>
+  
+    <script src="/MBlog/js/random.js"></script>
+  
+    <script src="/MBlog/js/highlight.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/MBlog/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/MBlog/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "D7CCC8";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/MBlog/css/sprite.svg'});
+</script>
+</body>
+</html>
+
