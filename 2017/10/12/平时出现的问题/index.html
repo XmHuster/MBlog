@@ -1,8 +1,6 @@
 
 
 
-  
-
 
 
 
@@ -18,9 +16,11 @@
   
   
   
-    <meta name="description" content="">
+    <meta name="description" content="这篇博客就是记录自己在平时的开发过程中遇到的问题。
+
+Ubuntu系统下拷贝文件到U盘的时候为什么出现 no space left on device的错误。A: 有可能是过多的使用了inodes的结果，很多的小文件会占用很多的inodes节点。自己出现的问题就是在拷贝很多图片的时候没有进行压缩，所以出现了这个错误。">
   
-  <title>标签: 杂文 [ HappyBird ]</title>
+  <title>平时出现的问题 [ HappyBird ]</title>
   
     <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
   
@@ -41,6 +41,15 @@
 <body>
 <div class="side-navigate hide-area">
   
+  
+    <div class="item next">
+      <a href="/MBlog/2017/08/31/变长编码/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        变长编码二元化
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -112,104 +121,71 @@
     <div id="content-inner">
       
       
-  <div id="tag">
-    <h1>杂文</h1>
-    
+  <article id="post">
+    <h1>平时出现的问题</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2017-10-12</span>
+      
+        <span id = "post-title-updated">修改于 2017-10-12</span>
+      
+      
+      <span id = "post-title-categories">分类
       
       
         
+        
+        <a href="/MBlog/categories/2017年10月/">2017年10月</a>
+      
+      </span>
       
       
-    
+      <span id = "post-title-tags">
+      标签
       
       
         
-      
-      
-    
-      
-      
         
+        <a href="/MBlog/tags/其他/">其他</a>
       
+      </span>
       
+    </p>
     
-      
-      
-        
-          
-        
-      
-      
-      <div class="post-title-item">
-  
-  <a href="/MBlog/2016/09/04/hello-world/">
-  
-    怎么使用hexo在github上面搭建个人博客
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">9-4</span>
-    
-    <span id = "post-title-categories">分类
-    
-    
-      
-      
-      <a href="/MBlog/categories/2016年9月/">2016年9月</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    标签
-    
-    
-      
-      
-      <a href="/MBlog/tags/杂文/">杂文</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
-    
-      
-      
-        
-      
-      
+    <p>这篇博客就是记录自己在平时的开发过程中遇到的问题。</p>
+<ol>
+<li>Ubuntu系统下拷贝文件到U盘的时候为什么出现 no space left on device的错误。<br>A: 有可能是过多的使用了inodes的结果，很多的小文件会占用很多的inodes节点。自己出现的问题就是在拷贝很多图片的时候没有进行压缩，所以出现了这个错误。</li>
+</ol>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
     
   </div>
+</div>
+
+  
+<nav id="pagination">
+  
 
   
 
+  
+    <a href="/MBlog/2017/08/31/变长编码/" class="next">下一篇 变长编码二元化 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
       
       
+      
+      <div id="disqus_thread"></div>
       
     </div>
   </div>
@@ -226,6 +202,29 @@
 
 </div>
 
+
+  <div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//https-xmhuster-github-io-mblog.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
 <div id="user-card">
@@ -326,6 +325,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "D7CCC8";
