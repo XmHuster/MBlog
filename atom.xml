@@ -5,7 +5,7 @@
   <link href="/MBlog/atom.xml" rel="self"/>
   
   <link href="https://xmhuster.github.io/MBlog/"/>
-  <updated>2017-10-12T06:49:08.978Z</updated>
+  <updated>2017-10-16T14:04:32.466Z</updated>
   <id>https://xmhuster.github.io/MBlog/</id>
   
   <author>
@@ -20,11 +20,43 @@
     <link href="https://xmhuster.github.io/MBlog/2017/10/12/%E5%B9%B3%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https://xmhuster.github.io/MBlog/2017/10/12/平时出现的问题/</id>
     <published>2017-10-12T06:41:00.400Z</published>
-    <updated>2017-10-12T06:49:08.978Z</updated>
+    <updated>2017-10-16T14:04:32.466Z</updated>
     
     <content type="html"><![CDATA[<p>这篇博客就是记录自己在平时的开发过程中遇到的问题。</p>
 <ol>
-<li>Ubuntu系统下拷贝文件到U盘的时候为什么出现 no space left on device的错误。<br>A: 有可能是过多的使用了inodes的结果，很多的小文件会占用很多的inodes节点。自己出现的问题就是在拷贝很多图片的时候没有进行压缩，所以出现了这个错误。</li>
+<li><p>Ubuntu系统下拷贝文件到U盘的时候为什么出现 no space left on device的错误。<br>A: 有可能是过多的使用了inodes的结果，很多的小文件会占用很多的inodes节点。自己出现的问题就是在拷贝很多图片的时候没有进行压缩，所以出现了这个错误。</p>
+</li>
+<li><p>怎么更新pip?<br>A: python -m pip install –upgrade pip, 若这样不行就用sudo pip install –upgrade pip。 可能是权限不够</p>
+</li>
+<li><p>使用pip安装python module的时候出现超时，并且提示说没有合适的安装版本的时候。<br>A: sudo pip –default-timeout-100 install tqdm。 一方面要加sudo有可能权限不够。另外一方面加上那个超时的命令。</p>
+</li>
+<li><p>在安装cv2的时候，用sudo pip –defalut-timeout=100 install cv2提示说没有合适的版本安装，<br>A:可以使用sudo pip –defalut-timeout=100 install opencv-python。</p>
+</li>
+<li><p>怎么在ubuntu下面用terminal安装sublime text 3.<br>A: sudo add-apt-repository ppa:webupd8team/sublime-text-3</p>
+</li>
+<li><p>ubuntu下安装的python的路径是在/usr/local/lib/下面，tensorflow的默认安装路径是在python2.7下面。</p>
+</li>
+<li><p>如果系统里面有两个版本的python的话，安装的时候要注意，不然可能就会安装到其他版本的路径下面去，那么这样子的话，就不能正常的使用了。<br>使用python或者pip安装的就会到python2.7下面去，使用pip3,或者python3就会在python3.5下面去。</p>
+</li>
+<li><p>出现inconsistent tabs and space的错误。<br>A: 就是代码从其他地方赋值过来，然后用空格代替一下table键。</p>
+</li>
+<li><p>怎么知道代码中使用的cv2是是什么版本？<br>A:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import cv2</div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    print(cv2.__version__)</div></pre></td></tr></table></figure>
+</li>
+<li><p>为什么python3调用videoCapture的时候没有办法打开视频，在ubuntu的环境下面？<br>A: 官方给给出的说法是：<br>Make sure proper versions of ffmpeg or gstreamer is installed. Sometimes, it is a headache to work with Video Capture mostly due to wrong installation of ffmpeg/gstreamer.<br>想想确实也还有可能。</p>
+</li>
+<li><p>python3安装了opencv-python，但是不能读取视频的问题？</p>
+</li>
+<li><p>python2安装了opencv-python,但是却提示找不到cv2 module?<br>A: 网上又N多教程，我各种试啊，但是后来不知道为什么就可以了，也不知道我装了什么。<br>blog.csdn.net/tengxing007/article/details/54380732.这篇博客还不错。<br>那个cv2装在dist-packages里面，在这个里面运行的话就不会报错。<br>所以应该是系统没有找到路径的问题。<br>那么问题来了？系统的默认路径是在哪里呢？<br>路径没有添加到系统路径中<br>vim ~/.bashrc<br>export $PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/cv2<br>添加完这个。。<br>然后source ~/.bashrc就可以了。</p>
+</li>
+<li><p>在linux下面想替换一个字符串？<br>A: 用vi打开，然后在命令模式下：%s/oldString/newString/g （/g表示替换所有，如果不加表示替换第一个）</p>
+</li>
+<li><p>当知行一个脚本文件的时候，提示拒绝访问<br>A: 那就是权限不够，用chmod 777 xx.sh。</p>
+</li>
+<li><p>出现Error : ./bin/bash^M: bad interpreter: no such file or directory<br>A: vi filename进入命令行模式: set ff=unix 然后保存退出。</p>
+</li>
+<li><p>当修改一个脚本文件的时候，发现并不生效，那就是这个脚本是存在错误的，可能sublime或者gedit看不到，但是使用vi就能显示出错误。</p>
+</li>
 </ol>
 ]]></content>
     
@@ -32,7 +64,7 @@
     
       &lt;p&gt;这篇博客就是记录自己在平时的开发过程中遇到的问题。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Ubuntu系统下拷贝文件到U盘的时候为什么出现 no space left on device的错误。&lt;br&gt;A: 有可能是过多的使用了inodes的结果，很多的小文件会占用很多的inodes节
+&lt;li&gt;&lt;p&gt;Ubuntu系统下拷贝文件到U盘的时候为什么出现 no space left on device的错误。&lt;br&gt;A: 有可能是过多的使用了inodes的结果，很多的小文件会占用很多的inod
     
     </summary>
     
