@@ -16,9 +16,9 @@
   
   
   
-    <meta name="description" content="引言程序员遇到问题，遇到Bug这是在所能免的事情，当大一大二刚遇到问题的时候，那个时候可能是卖卖萌，求学长帮忙解决一下。幸好，当时碰到的几个学长都是授之以渔的，所以慢慢的就通过搜索引擎开始解决问题了。大三的时候基本上都遇到问题都是自己解决了。刚开始肯定是比较抓狂的，问题很难解决的时候是比较绝望的，这个时候如果解决了问题，所收获的成就感也是满满的。等习惯了之后，碰到问题也不会绝望了，因为自信也...">
+    <meta name="description" content="Python中用imageio读视频的方法Python中读视频的方法，目前我已知的有两种，一种就是很大众的用opencv来读的，这个网上到处都是教程，也就是几行代码的事情。但是在linux安装opencv并不是很简单，如果环境好的话，也不是很困难，参见这里。如果环境不好，因为一个网络原因各种安装不好，真的是自求多福。回到这篇文章的正题，用imageio读视频，这个本来也就是几行代码的问题，但...">
   
-  <title>碰到问题的时候该怎么处理 [ HappyBird ]</title>
+  <title>Python中用imageio读视频的方法 [ HappyBird ]</title>
   
     <link rel="alternate" href="/MBlog/atom.xml" title="HappyBird">
   
@@ -40,21 +40,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/MBlog/2017/08/31/变长编码/">
+      <a href="/MBlog/2017/10/17/Ubuntu装opencv的过程/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        变长编码二元化
+        在Ubuntu 16.04下装opencv3.2.0的过程。
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/MBlog/2017/08/11/熵编码/">
+      <a href="/MBlog/2017/10/12/平时出现的问题/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        熵编码
+        平时出现的问题
       </div>
     </div>
   
@@ -129,11 +129,11 @@
       
       
   <article id="post">
-    <h1>碰到问题的时候该怎么处理</h1>
+    <h1>Python中用imageio读视频的方法</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">Created at 2017-08-26</span>
+      <span id = "post-title-date">Created at 2017-10-17</span>
       
-        <span id = "post-title-updated">Updated at 2017-08-26</span>
+        <span id = "post-title-updated">Updated at 2017-10-17</span>
       
       
       <span id = "post-title-categories">Category
@@ -141,7 +141,7 @@
       
         
         
-        <a href="/MBlog/categories/2017年8月/">2017年8月</a>
+        <a href="/MBlog/categories/2017年10月/">2017年10月</a>
       
       </span>
       
@@ -152,24 +152,24 @@
       
         
         
-        <a href="/MBlog/tags/其他/">其他</a>
+        <a href="/MBlog/tags/python/">python</a>
       
       </span>
       
     </p>
     
-    <h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>程序员遇到问题，遇到Bug这是在所能免的事情，当大一大二刚遇到问题的时候，那个时候可能是卖卖萌，求学长帮忙解决一下。幸好，当时碰到的几个学长都是授之以渔的，所以慢慢的就通过搜索引擎开始解决问题了。大三的时候基本上都遇到问题都是自己解决了。刚开始肯定是比较抓狂的，问题很难解决的时候是比较绝望的，这个时候如果解决了问题，所收获的成就感也是满满的。<br>等习惯了之后，碰到问题也不会绝望了，因为自信也是在慢慢中建立的，相信所有的问题都是可以被解决的。</p>
-<h4 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h4><p>在过往的程序开发当中，遇到的问题可以简单的分为10种。<br>一种是在编译器上面可以调试的，这个问题一般都是比较简单的，因为通过调试就可以找到错误，并且修改。<br>另外一种就是可以是在装一个软件的过程种出错了，或者是报了结果不是自己想要的。比如说之前的IE插件开发，需要在显示栏显示我的图标，然后程序编译没有错误，但是显示栏就是没有我的图标等之类的问题就比较复杂一些了。</p>
-<h4 id="问题应对"><a href="#问题应对" class="headerlink" title="问题应对"></a>问题应对</h4><ul>
-<li>第一种编译问题，语法，逻辑错误的话都是很简单的错误。只要调试一下就可以了。</li>
-<li>第二种问题。需要冷静分析，从头理顺思路，排除各种可能出现的错误原因。</li>
-<li><p>理解原理，得原理算法者得天下。（会有这种的感受是因为：现在工作在的公司，旁边好几个博士生，其中一个博士生就对我们所做的原理非常的清楚，所以当你问他问题的时候，你就会发现，虽然他在编程代码上可能不是非常了解，但是从原理的角度上一下子就可以看出代码是否有问题，这样子行不行。）</p>
-</li>
-<li><p>今天春招面试A家的时候，面试官问平时都是怎么解决问题的。因为没有反应过来，很长一段时间也没有敲代码了，就想到最近写的IE插件开发，因为之前从来没有接触过，时间也比较短，所以就只能按照官方文档来，正如上面说的，因为对原理和一些配置代码什么的都不是很清楚，所以当时因为一个地方写错了，就不是很清楚，只能一直不断的尝试。所以我当时就回答说，我重复的尝试。 其实找问题最好的肯定不是说一直不分析的不断重复的尝试，而是要分析问题，然后不断的排错，找原因的。</p>
-</li>
-</ul>
-<h4 id="避免问题"><a href="#避免问题" class="headerlink" title="避免问题"></a>避免问题</h4><p>写代码的时候就尽量做到每一个地方细节都很清楚，而不是大概知道干什么，或者有的干什么也不是很清楚。这样子会比较不容易出问题，或者等出了问题，也可以比较快的知道哪里出了问题，出了什么问题。</p>
-<h4 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h4><p>写这篇文章是为了记录下来自己现在的想法（如果能有其他人看到我的文章，并且从中受益，那当然是最好不过的了），因为谁都不敢保证自己之后是否能按照现在的想法执行，或者说之后因为一些事情就会忘记了现在的想法。所以内容并不是非常的丰富，但是我还是选择记录下来。并且我觉得记录下自己当下的想法，所做的事情，所遇到的问题，是一个非常好的习惯。</p>
+    <h3 id="Python中用imageio读视频的方法"><a href="#Python中用imageio读视频的方法" class="headerlink" title="Python中用imageio读视频的方法"></a>Python中用imageio读视频的方法</h3><p>Python中读视频的方法，目前我已知的有两种，一种就是很大众的用opencv来读的，这个网上到处都是教程，也就是几行代码的事情。但是在linux安装opencv并不是很简单，如果环境好的话，也不是很困难，参见<a href="">这里</a>。如果环境不好，因为一个网络原因各种安装不好，真的是自求多福。回到这篇文章的正题，用imageio读视频，这个本来也就是几行代码的问题，但是从来没有用过，然后报错了，网上也就是几个例子，也没有找到关于这个错误的解决方法，自己多试了试，解决了问题。虽然简单，但是我还是记录下来了。</p>
+<p>根据网上看到的代码是以下这样子的。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import pylab</div><div class="line">import imageio</div><div class="line"></div><div class="line">filename = &apos;/path/to/your/video.mp4&apos;</div><div class="line"></div><div class="line">vid = imageio.get_reader(filename,  &apos;ffmpeg&apos;)</div><div class="line">for num in enumerate(vid):</div><div class="line">    image = vid.get_data(num)</div><div class="line">    #以下这几句是现实图片的</div><div class="line">    fig = pylab.figure()</div><div class="line">    fig.suptitle(&apos;image #&#123;&#125;&apos;.format(num), fontsize=20)</div><div class="line">    pylab.imshow(image)</div><div class="line">pylab.show()</div></pre></td></tr></table></figure>
+</code></pre><p>但是运行的时候报了一个错误：IndexError: Reached end of video。我还以为是本应该结束了，但是get_data还读了。然后在网上找了enumerate这个函数的用法，然后网上的例子是这样子的。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">list1 = [&quot;这&quot;, &quot;是&quot;, &quot;一个&quot;, &quot;测试&quot;]</div><div class="line">for index, item in enumerate(list1):</div><div class="line">	print index, item</div><div class="line">&gt;&gt;&gt;</div><div class="line">0 这</div><div class="line">1 是</div><div class="line">2 一个</div><div class="line">3 测试</div></pre></td></tr></table></figure>
+</code></pre><p>接着我也学着打印出来。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import pylab</div><div class="line">import imageio</div><div class="line"></div><div class="line">filename = &apos;/path/to/your/video.mp4&apos;</div><div class="line"></div><div class="line">vid = imageio.get_reader(filename,  &apos;ffmpeg&apos;)</div><div class="line">for num , image in enumerate(vid):</div><div class="line">	print(&quot;-------the num is %d &quot; % num)</div><div class="line">	print(&quot;-------the image is %s &quot; %s)</div></pre></td></tr></table></figure>
+</code></pre><p>这样子没有报错，然后改成下面的也没有报错。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import pylab</div><div class="line">import imageio</div><div class="line"></div><div class="line">filename = &apos;/path/to/your/video.mp4&apos;</div><div class="line"></div><div class="line">vid = imageio.get_reader(filename,  &apos;ffmpeg&apos;)</div><div class="line">for num , image in enumerate(vid):</div><div class="line">	 image = vid.get_data(num)</div></pre></td></tr></table></figure>
+</code></pre><p>所以错误的原因就是少添加了一个image这个变量，如果不需要这个，也需要用_代替。<br>所以，用imageio读取视频的正确代码是：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import pylab</div><div class="line">import imagei</div><div class="line">filename = &apos;/path/to/your/video.mp4&apos;</div><div class="line">vid = imageio.get_reader(filename,  &apos;ffmpeg&apos;)</div><div class="line">for num , _ in enumerate(vid):</div><div class="line">    image = vid.get_data(num)</div></pre></td></tr></table></figure>
+</code></pre><p>source <a href="blog.csdn.net/churximi/article/details/51648388">here</a></p>
 
   </article>
   <div class="random-toc-area">
@@ -177,20 +177,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题分类"><span class="toc-text">问题分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题应对"><span class="toc-text">问题应对</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#避免问题"><span class="toc-text">避免问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结尾"><span class="toc-text">结尾</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python中用imageio读视频的方法"><span class="toc-text">Python中用imageio读视频的方法</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/MBlog/2017/08/31/变长编码/" class="prev">&larr; Prev post 变长编码二元化</a>
+    <a href="/MBlog/2017/10/17/Ubuntu装opencv的过程/" class="prev">&larr; Prev post 在Ubuntu 16.04下装opencv3.2.0的过程。</a>
   
 
   
 
   
-    <a href="/MBlog/2017/08/11/熵编码/" class="next">Next post 熵编码 &rarr;</a>
+    <a href="/MBlog/2017/10/12/平时出现的问题/" class="next">Next post 平时出现的问题 &rarr;</a>
   
 </nav>
 
